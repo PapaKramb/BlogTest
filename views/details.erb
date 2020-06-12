@@ -1,0 +1,29 @@
+<h2>Комментарии</h2>
+<p>
+	<%= @row['content'] %>
+	<br/>
+	<br/>
+	Added at: <%= @row['created_date'] %>
+	<br/>
+</p>
+<p>
+<% @comments.each do |comment| %>
+	<hr>
+	<p>
+		<h4><%= comment['username'] %></h4>
+		<br>
+		<%= comment['content'] %>
+		<br>
+		<%= comment['created_date'] %>
+	</p>
+	<hr/>
+<% end %>
+</p>
+
+<form action="/details/<%= post['id'] %>" method="POST">
+   <div class="form-group">
+   	<label for="exampleFormControlTextarea1">Напишите ваш пост</label>
+    <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Место для поста"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Добавить пост</button>
+</form>

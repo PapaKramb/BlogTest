@@ -1,0 +1,17 @@
+<h2>Все посты</h2>
+<p>
+<% @results.each do |post| %>
+	<hr>
+	<p>
+		<h4><%= post['username'] %></h4>
+		<br>
+		<%= post['content'] %>
+		<br>
+		<%= post['created_date'] %>
+		<br>
+		<br/>
+		<a href="/detais/<%= post['id'] %>">Комментарии</a>
+	</p>
+	<hr/>
+<% end %>
+</p>
