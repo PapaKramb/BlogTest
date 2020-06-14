@@ -74,3 +74,23 @@ get '/details/:post_id' do
 
 	erb :details
 end
+
+post '/details/:post_id' do
+	post_id = params[:post_id]
+
+	content = params[:content]
+
+	if content == ''
+		@error = 'Введите хоть что-нибудь!'
+	end
+
+	@db.execute 'insert into Comments 
+	(
+		content,
+		created_date,
+		post_id
+	)
+	values( ?, datetime(), ? )', [content, post_id]
+
+	redirect to ('/details/' + post_id)
+end
